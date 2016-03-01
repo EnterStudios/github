@@ -7,4 +7,5 @@ module.exports = function(robot) {
   robot.loadFile(path.resolve(__dirname, "scripts"), "github-merge.js");
   robot.loadFile(path.resolve(__dirname, "scripts"), "github-pulls.js");
   robot.loadFile(path.resolve(__dirname, "scripts"), "github-search.js");
+  robot.loadFile(path.resolve(__dirname, "scripts"), "github-status.js");
 };
