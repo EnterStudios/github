@@ -6,6 +6,7 @@
     "HUBOT_GITHUB_TOKEN": true,
     "HUBOT_GITHUB_USER": false,
     "HUBOT_GITHUB_REPO": false,
-    "HUBOT_GITHUB_API": false
+    "HUBOT_GITHUB_API": false,
+    "HUBOT_GITHUB_ORG": false
   }
 }
