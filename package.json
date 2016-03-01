@@ -1,0 +1,27 @@
+{
+  "name": "github",
+  "version": "0.0.1",
+  "description": "Control Github from Nestor",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/asknestor-apps/github.git"
+  },
+  "keywords": [
+    "slack",
+    "hubot",
+    "nestor"
+  ],
+  "author": "Arun Thampi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/asknestor-apps/github/issues"
+  },
+  "homepage": "https://github.com/asknestor-apps/github#readme",
+  "dependencies": {
+    "nestorbot": "^0.17.0"
+  }
+}
