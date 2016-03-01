@@ -1,0 +1,10 @@
+{
+  "name": "Github",
+  "permalink": "github",
+  "description": "Manage Github with Nestor",
+  "environment_keys": {
+    "HUBOT_GITHUB_TOKEN": true,
+    "HUBOT_GITHUB_USER": false,
+    "HUBOT_GITHUB_API": false
+  }
+}
