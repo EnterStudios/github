@@ -6,7 +6,7 @@ module.exports = function(robot) {
     url_api_base = "https://api.github.com";
   }
 
-  robot.respond(/show\s+(me\s+)?(.*)\s+pulls(\s+with\s+)?(.*)?/i, function(msg, done) {
+  robot.respond(/gh show\s+(me\s+)?(.*)\s+pulls(\s+with\s+)?(.*)?/i, function(msg, done) {
     var filter_reg_exp;
     var repo = github.qualified_repo(msg.match[2]);
 

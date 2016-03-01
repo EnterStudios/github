@@ -3,7 +3,7 @@ require('date-utils');
 module.exports = function(robot) {
   var github = require("githubot")(robot);
 
-  robot.respond(/repo show (.*)$/i, function(msg, done) {
+  robot.respond(/gh repo show (.*)$/i, function(msg, done) {
     var repo = github.qualified_repo(msg.match[1]);
     var base_url = process.env.HUBOT_GITHUB_API || 'https://api.github.com';
     var url = base_url + "/repos/" + repo + "/commits";
