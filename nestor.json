@@ -3,10 +3,26 @@
   "permalink": "github",
   "description": "Manage Github with Nestor",
   "environment_keys": {
-    "HUBOT_GITHUB_TOKEN": true,
-    "HUBOT_GITHUB_USER": false,
-    "HUBOT_GITHUB_REPO": false,
-    "HUBOT_GITHUB_API": false,
-    "HUBOT_GITHUB_ORG": false
+    "HUBOT_GITHUB_TOKEN": {
+      "required": true,
+      "mode": "oauth",
+      "extract_from": "token"
+    },
+    "HUBOT_GITHUB_USER": {
+      "required": false,
+      "mode": "user"
+    },
+    "HUBOT_GITHUB_REPO": {
+      "required": false,
+      "mode": "user"
+    },
+    "HUBOT_GITHUB_API": {
+      "required": false,
+      "mode": "user"
+    },
+    "HUBOT_GITHUB_ORG": {
+      "required": false,
+      "mode": "user"
+    }
   }
 }
