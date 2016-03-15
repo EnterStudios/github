@@ -6,7 +6,7 @@ module.exports = function(robot) {
     url_api_base = "https://api.github.com";
   }
 
-  robot.respond(/gh show\s+(me\s+)?(.*)\s+pulls(\s+with\s+)?(.*)?/i, function(msg, done) {
+  robot.respond(/github show\s+(me\s+)?(.*)\s+pulls(\s+with\s+)?(.*)?/i, { suggestions: ["github show me <repo> pulls"] }, function(msg, done) {
     var filter_reg_exp;
     var repo = github.qualified_repo(msg.match[2]);
 
@@ -45,7 +45,7 @@ module.exports = function(robot) {
     });
   });
 
-  robot.respond(/show\s+(me\s+)?org\-pulls(\s+for\s+)?(.*)?/i, function(msg, done) {
+  robot.respond(/github show\s+(me\s+)?org\-pulls(\s+for\s+)?(.*)?/i, { suggestions: ["github show me org-pulls"] }, function(msg, done) {
     var org_name = msg.match[3] || process.env.HUBOT_GITHUB_ORG;
 
     if (!org_name) {

@@ -45,15 +45,15 @@ module.exports = function(robot) {
     });
   };
 
-  robot.respond(/gh status$/i, function(msg, done) {
+  robot.respond(/github status$/i, { suggestions: ["github status"] }, function(msg, done) {
     status(msg, done);
   });
 
-  robot.respond(/gh status last$/i, function(msg, done) {
+  robot.respond(/github status last$/i, { suggestions: ["github status last"] }, function(msg, done) {
     lastMessage(msg, done);
   });
 
-  robot.respond(/gh status messages$/i, function(msg, done) {
+  robot.respond(/github status messages$/i, { suggestions: ["github status messages"] }, function(msg, done) {
     statusMessages(msg, done);
   });
 };

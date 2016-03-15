@@ -17,7 +17,7 @@ module.exports = function(robot) {
     });
   };
 
-  robot.respond(/gh repo committers (.*)$/i, function(msg, done) {
+  robot.respond(/github repo committers (.*)$/i, { suggestions: ["github repo committers <repo>"] }, function(msg, done) {
     read_contributors(msg, done, function(commits) {
       var max_length = 20;
       var results = [];
@@ -31,7 +31,7 @@ module.exports = function(robot) {
     });
   });
 
-  robot.respond(/gh repo top-committers? (.*)$/i, function(msg, done) {
+  robot.respond(/github repo top-committers? (.*)$/i, { suggestions: ["github repo top-committers <repo>"] }, function(msg, done) {
     read_contributors(msg, done, function(commits) {
       var top_commiter = null;
       for (var i = 0; i < commits.length; i++) {

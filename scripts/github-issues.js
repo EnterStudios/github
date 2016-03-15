@@ -1,7 +1,7 @@
 var _ = require("underscore");
 var _s = require("underscore.string");
 
-var ASK_REGEX = /gh show\s(me)?\s*(\d+|\d+\sof)?\s*(\S+'s|my)?\s*(\S+)?\s*issues\s*(for\s\S+)?\s*(about\s.+)?/i;
+var ASK_REGEX = /github show\s(me)?\s*(\d+|\d+\sof)?\s*(\S+'s|my)?\s*(\S+)?\s*issues\s*(for\s\S+)?\s*(about\s.+)?/i;
 
 var parse_criteria = function(message) {
   var assignee, label, limit, me, query, ref, repo;
@@ -47,7 +47,7 @@ var complete_assignee = function(msg, name) {
 module.exports = function(robot) {
   var github = require("githubot")(robot);
 
-  robot.respond(ASK_REGEX, function(msg, done) {
+  robot.respond(ASK_REGEX, { suggestions: ["github show [me] issues <repo>"] }, function(msg, done) {
     var base_url = process.env.HUBOT_GITHUB_API || 'https://api.github.com';
     var criteria = parse_criteria(msg.message.text);
     criteria.repo = github.qualified_repo(criteria.repo);

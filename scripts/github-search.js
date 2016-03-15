@@ -3,7 +3,7 @@ module.exports = function(robot) {
     apiVersion: 'preview'
   });
 
-  robot.respond(/gh search ((.+\/[^\s]+) )?(.+)/i, function(msg, done) {
+  robot.respond(/github search ((.+\/[^\s]+) )?(.+)/i, { suggestions: ["github search [repo] <query>"] }, function(msg, done) {
     var e, error, in_repo, query, repo, repostr;
     try {
       var repo = msg.match[2];
