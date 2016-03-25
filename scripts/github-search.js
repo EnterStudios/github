@@ -1,13 +1,11 @@
 module.exports = function(robot) {
-  var github = require('githubot')(robot, {
-    apiVersion: 'preview'
-  });
+  var github = require('githubot')(robot);
 
-  robot.respond(/github search ((.+\/[^\s]+) )?(.+)/i, { suggestions: ["github search [repo] <query>"] }, function(msg, done) {
+  robot.respond(/github search (.+\/[^\s]+)\s+(.+)/i, { suggestions: ["github search <repo> <query>"] }, function(msg, done) {
     var e, error, in_repo, query, repo, repostr;
     try {
-      var repo = msg.match[2];
-      var query = msg.match[3].trim();
+      var repo = msg.match[1];
+      var query = msg.match[2].trim();
       var repostr = '';
       var in_repo = '';
 
