@@ -1,3 +1,5 @@
+var githubErrorHandler = require('./error');
+
 module.exports = function(robot) {
   var github = require("githubot")(robot);
   var url_api_base = "";
@@ -13,6 +15,8 @@ module.exports = function(robot) {
     if (msg.match[3]) {
       filter_reg_exp = new RegExp(msg.match[4], "i");
     }
+
+    github.handleErrors(function(response) { githubErrorHandler(response, msg, done); });
 
     github.get(url_api_base + "/repos/" + repo + "/pulls", function(pulls) {
       var summary = "";
@@ -55,6 +59,8 @@ module.exports = function(robot) {
 
     org_name = org_name.trim();
     var url = url_api_base + "/orgs/" + org_name + "/issues?filter=all&state=open&per_page=100";
+
+    github.handleErrors(function(response) { githubErrorHandler(response, msg, done); });
 
     github.get(url, function(issues) {
       var summary = "";

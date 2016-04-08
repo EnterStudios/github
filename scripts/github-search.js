@@ -1,3 +1,5 @@
+var githubErrorHandler = require('./error');
+
 module.exports = function(robot) {
   var github = require('githubot')(robot);
 
@@ -14,9 +16,7 @@ module.exports = function(robot) {
         in_repo = " in repo " + repo;
       }
 
-      github.handleErrors(function(response) {
-        msg.send("Error: " + response.statusCode + " " + response.error, done);
-      });
+      github.handleErrors(function(response) { githubErrorHandler(response, msg, done); });
 
       github.get("search/code?q=" + (encodeURIComponent(query)) + repostr + "&sort=indexed", function(data) {
         var broken, first_n, found, i, item, len, ref, resp;

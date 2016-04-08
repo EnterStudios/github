@@ -1,5 +1,6 @@
 var _ = require("underscore");
 var _s = require("underscore.string");
+var githubErrorHandler = require('./error');
 
 var ASK_REGEX = /github show\s(me)?\s*(\d+|\d+\sof)?\s*(\S+'s|my)?\s*(\S+)?\s*issues\s*(for\s\S+)?\s*(about\s.+)?/i;
 
@@ -64,6 +65,8 @@ module.exports = function(robot) {
     if (criteria.assignee != null) {
       query_params.assignee = criteria.assignee;
     }
+
+    github.handleErrors(function(response) { githubErrorHandler(response, msg, done); });
 
     github.get(base_url + "/repos/" + criteria.repo + "/issues", query_params, function(issues) {
       var assignee, issue, j, label, labels, len, results;

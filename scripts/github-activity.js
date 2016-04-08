@@ -1,4 +1,5 @@
 require('date-utils');
+var githubErrorHandler = require('./error');
 
 module.exports = function(robot) {
   var github = require("githubot")(robot);
@@ -7,6 +8,8 @@ module.exports = function(robot) {
     var repo = github.qualified_repo(msg.match[1]);
     var base_url = process.env.HUBOT_GITHUB_API || 'https://api.github.com';
     var url = base_url + "/repos/" + repo + "/commits";
+
+    github.handleErrors(function(response) { githubErrorHandler(response, msg, done); });
 
     github.get(url, function(commits) {
       if (commits.message) {

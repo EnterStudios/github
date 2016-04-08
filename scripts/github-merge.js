@@ -1,3 +1,5 @@
+var githubErrorHandler = require('./error');
+
 module.exports = function(robot) {
   var github = require("githubot")(robot);
 
@@ -5,6 +7,9 @@ module.exports = function(robot) {
     var app = msg.match[1];
     var head = msg.match[3] || "master";
     var base = msg.match[4];
+
+    github.handleErrors(function(response) { githubErrorHandler(response, msg, done); });
+
     github.branches(app).merge(head, {
       base: base
     }, function(merge) {
